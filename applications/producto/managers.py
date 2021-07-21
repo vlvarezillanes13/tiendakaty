@@ -4,6 +4,11 @@ from django.db.models import Q
 class ProductoManager(models.Manager):
     """ procedimiento modelo product """
 
+    def mostrar_ultimos(self):
+        return self.filter(
+            anulado = False
+        ).order_by('-created')
+
     def buscar_producto(self, kword, order):
         consulta = self.filter(
             Q(nombre__icontains=kword)

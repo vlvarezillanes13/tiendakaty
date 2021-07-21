@@ -2,9 +2,6 @@ from django.db import models
 from model_utils.models import TimeStampedModel
 from .managers import ProductoManager
 
-import os
-from pathlib import Path
-BASE_DIR = Path(__file__).resolve().parent.parent
 # Create your models here.
 
 class Clasificador(TimeStampedModel):
@@ -20,11 +17,29 @@ class Clasificador(TimeStampedModel):
     def __str__(self):
         return self.nombre
 
+class Marca(TimeStampedModel):
+    nombre = models.CharField(
+        max_length=20,
+        unique=True
+    )
+
+    class Meta:
+        verbose_name = 'Marca'
+        verbose_name_plural = 'Marcas'
+
+    def __str__(self):
+        return self.nombre
+
+    
 
 class Producto(TimeStampedModel):
     nombre = models.CharField(
         'Nombre', 
         max_length=40
+    )
+    marca = models.ForeignKey(
+        Marca, 
+        on_delete=models.CASCADE
     )
     clasificador = models.ForeignKey(
         Clasificador, 

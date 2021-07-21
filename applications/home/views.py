@@ -13,5 +13,6 @@ class HomePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HomePageView,self).get_context_data(**kwargs)
         # productos
-        context['productos'] = Producto.objects.all()
+        context['productos'] = Producto.objects.mostrar_ultimos()[0:3]
+        print(Producto.objects.mostrar_ultimos())
         return context
