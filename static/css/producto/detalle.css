@@ -1,0 +1,7 @@
+.container{
+    margin-top: 1.5rem;
+}
+
+.card, .card > ul >li {
+    background-color: rgba(255, 99, 71, 0.4);
+}

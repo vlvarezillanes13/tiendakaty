@@ -8,6 +8,11 @@ urlpatterns = [
         'lista-de-productos',
         views.ProductoListView.as_view(),
         name='listar-productos'
-        ),
+    ),
+    path(
+        'detalle-del-producto/<pk>/',
+        views.ProductoDetailView.as_view(),
+        name='detalle-producto'
+    ),
     
 ]

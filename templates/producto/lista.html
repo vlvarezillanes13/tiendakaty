@@ -12,7 +12,7 @@
     <form>
         <div class="row">
           <div class="col-11">
-            <input type="text" class="form-control" placeholder="Producto a Buscar">
+            <input type="text" id="kword" name="kword" class="form-control" placeholder="Producto a Buscar">
           </div>
           <div class="col">
             <button type="submit" class="btn btn-outline-success">Buscar</button>
@@ -29,10 +29,10 @@
           </a>
         </div>
         <div class="col col-lg-2">
-            <a href="?order=fecha">
-              <span class="btn btn-outline-primary">Por fecha</span>
-            </a>
-          </div>
+          <a href="?order=marca">
+            <span class="btn btn-outline-primary">Por Marca</span>
+          </a>
+         </div>
     </div>
 
     <div class="row" style="margin-top: 1.5rem;">
@@ -41,28 +41,17 @@
                 <tr>
                     <th>Nombre del Producto</th>
                     <th>Precio del producto</th>
+                    <th>Marca</th>
                     <th>Detalles</th>
                 </tr>
+                {% for producto in productos %}
                 <tr>
-                    <td>Cola Fria</td>
-                    <td>$500</td>
-                    <td><a href="#" class="btn btn-warning"><i class="fas fa-info-circle"></i></a></td> 
-                </tr>
-                <tr>
-                    <td>Cola Fria</td>
-                    <td>$500</td>
-                    <td><a href="#" class="btn btn-warning"><i class="fas fa-info-circle"></i></a></td> 
-                </tr>
-                <tr>
-                    <td>Cola Fria</td>
-                    <td>$500</td>
-                    <td><a href="#" class="btn btn-warning"><i class="fas fa-info-circle"></i></a></td> 
-                </tr>
-                <tr>
-                    <td>Cola Fria</td>
-                    <td>$500</td>
-                    <td><a href="#" class="btn btn-warning"><i class="fas fa-info-circle"></i></a></td> 
-                </tr>
+                  <td>{{producto.nombre}}</td>
+                  <td>{{producto.precio}}</td>
+                  <td>{{producto.marca}}</td>
+                  <td><a href="{% url 'productos:detalle-producto' producto.pk %}" class="btn btn-warning"><i class="fas fa-info-circle"></i></a></td> 
+              </tr>
+                {% endfor %}
             </table>
         </div>
     </div>    

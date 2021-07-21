@@ -9,16 +9,17 @@ class ProductoManager(models.Manager):
             anulado = False
         ).order_by('-created')
 
+    
     def buscar_producto(self, kword, order):
         consulta = self.filter(
             Q(nombre__icontains=kword)
         )
         # verificamos en que orden se solicita
-        if order == 'fecha':
-            # ordenar por fecha
-            return consulta.order_by('created')
-        elif order == 'nombre':
+        if order == 'nombre':
             # ordenar por nombre
             return consulta.order_by('nombre')
+        elif order == 'marca':
+            # ordenar por nombre
+            return consulta.order_by('marca')
         else:
             return consulta.order_by('-created')

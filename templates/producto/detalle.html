@@ -1,0 +1,39 @@
+{% extends "producto/base_producto.html" %}
+{% load  static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/producto/detalle.css' %}">
+{% endblock css %}
+
+{% block title %}
+   Detalle del produdcto
+{% endblock title %}
+
+{% block content %}
+{% include "includes/header.html" %}
+<div class="container ">
+    <div class="row justify-content-md-center">
+        <dic class="col col-lg-2 ">
+            <div class="card" style="width: 18rem;">
+                <img src="{{producto.imagen.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">{{producto.nombre}}</h5>
+                <p class="card-text">{{producto.descripcion}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Marca:</b></li>
+                    <li class="list-group-item">{{producto.marca}}</li>
+                    <li class="list-group-item"><b>Precio:</b></li>
+                    <li class="list-group-item">${{producto.precio}}</li>
+                </ul>
+                <div class="card-body">
+                    <div class="btn-group">
+                        <a href="{% url 'productos:listar-productos' %}" class="card-link btn btn-primary" style="margin-right: 0.5rem;">Volver</a>
+                        <a href="{% url 'home:inicio' %}"  class="card-link btn btn-primary">Inicio</a>
+                    </div>
+                </div>
+            </div>
+        </dic>
+    </div>
+</div>
+{% endblock content %}
