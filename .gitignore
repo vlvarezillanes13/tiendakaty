@@ -1,0 +1,6 @@
+#json
+secret.json
+
+#
+*pyc
+/migrations/*

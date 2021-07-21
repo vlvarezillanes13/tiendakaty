@@ -1,0 +1,31 @@
+hr{
+    margin: 0;
+}
+/* CARRUSEL*/
+.carousel{
+    margin-top: 0;
+}
+
+#carouselExampleSlidesOnly > .carousel-inner > .carousel-item  > img {
+    height: 500px;
+    max-width: 1494px;
+}
+
+/* Tarjetas */
+.tarjetas > .row > .col{
+    display: flex;
+    justify-content: center;
+}
+.card{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    background-color: rgba(255, 99, 71, 0.4);
+}
+
+.card img{
+    height: 280px;
+}
+
+.card-text{
+    margin-bottom:5px;
+}
