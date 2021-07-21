@@ -19,6 +19,7 @@ from .views import(
 class ProductoListView(ListView):
     template_name = "producto/lista.html"
     context_object_name = 'productos'
+    paginate_by = 5
 
     def get_queryset(self):
         kword = self.request.GET.get("kword", '')

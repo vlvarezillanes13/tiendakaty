@@ -54,7 +54,43 @@
                 {% endfor %}
             </table>
         </div>
-    </div>    
+    </div>
+    <div class="row justify-content-md-center">
+      <div class="col col-lg-2">
+        {% if is_paginated %}
+          <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              {% if page_obj.has_previous %}
+              <li class="page-item"><a class="page-link" href="?page={{page_obj.previous_page_number}}">Atras</a></li>
+              {% else %}
+              <li class="page-item disabled">
+                <span class="page-link">Atras</span>
+              </li>
+              {% endif %}
+              
+              {% for pagina in paginator.page_range %}
+              
+              {% ifequal pagina page_obj.number  %} 
+              <li class="page-item active" aria-current="page">
+                <span class="page-link">{{pagina}}</span>
+              </li>
+              {% else %}
+              <li class="page-item"><a class="page-link" href="?page={{pagina}}">{{pagina}}</a></li>
+              {% endifequal %}          
+              {% endfor %}
+              
+              {% if page_obj.has_next %}
+              <li class="page-item"><a class="page-link" href="?page={{page_obj.next_page_number}}">Siguiente</a></li>
+              {% else %}
+              <li class="page-item disabled">
+                <span class="page-link">Siguiente</span>
+              </li>
+              {% endif %}
+            </ul>
+          </nav>
+        {% endif %}  
+      </div>
+    </div>  
 </div>
 
 {% endblock content %}
