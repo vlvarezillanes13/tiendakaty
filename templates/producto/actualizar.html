@@ -43,10 +43,14 @@
                 </div>
                 <div class="mt-5">
                     <label for="formFile" class="form-label">Ingrese Imagen: </label>
+                    <img src="{{producto.imagen.url}}" alt="Imagen Actual">
                     {{form.imagen}}
                 </div>
                 <div class="mt-5">
-                    <button type="submit" class="btn btn-success">Guardar</button>
+                    <div class="card-body">
+                        <a href="{% url 'productos:listar-productos' %}" class="card-link btn btn-primary" style="margin-right: 0.5rem;">Volver</a>
+                        <button type="submit" class="btn btn-success">Guardar</button>
+                    </div>
                 </div>
                 
             </div>

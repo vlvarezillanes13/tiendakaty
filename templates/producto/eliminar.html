@@ -52,7 +52,10 @@
                     <img src="{{producto.imagen.url}}" class="img-thumbnail" alt="Imagen del Producto">
                 </div>
                 <div class="mt-5">
-                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <div class="btn-group">
+                        <a href="{% url 'productos:listar-productos' %}" class="card-link btn btn-primary" style="margin-right: 0.5rem;">Volver</a>
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </div>
                 </div>
                 
             </div>

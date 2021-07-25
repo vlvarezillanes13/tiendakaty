@@ -45,13 +45,15 @@ class ProductoDetailView(DetailView):
 
 class ProductoCreateView(FormView):
     #model = Producto
-    template_name = "producto/agregar_producto.html"
+    template_name = "producto/agregar.html"
     form_class = ProductoForm
     success_url = reverse_lazy('productos:listar-productos')
 
     def form_valid(self, form):
+        nombre  = form.cleaned_data['nombre']
+        nombre_edit = nombre[0].upper()+nombre[1::]
         Producto.objects.create(
-            nombre=form.cleaned_data['nombre'],
+            nombre=nombre_edit,
             marca=form.cleaned_data['marca'],
             clasificador=form.cleaned_data['clasificador'],
             descripcion=form.cleaned_data['descripcion'],
@@ -70,10 +72,25 @@ class ProductoDeleteView(DeleteView):
 
 
 class ProductoUpdateView(UpdateView):
-    template_name = "producto/agregar_producto.html"
+    template_name = "producto/actualizar.html"
     model = Producto
     form_class = ProductoForm
     success_url = reverse_lazy('productos:listar-productos')
+
+    def form_valid(self, form):
+        nombre  = form.cleaned_data['nombre']
+        nombre_edit = nombre[0].upper()+nombre[1::]
+        Producto.objects.update(
+            nombre=nombre_edit,
+            marca=form.cleaned_data['marca'],
+            clasificador=form.cleaned_data['clasificador'],
+            descripcion=form.cleaned_data['descripcion'],
+            precio=form.cleaned_data['precio'],
+            anulado=form.cleaned_data['anulado'],
+            imagen=form.cleaned_data['imagen']
+
+        )
+        return super(ProductoCreateView, self).form_valid(form) 
 
 '''
 class ProductCreateView(AlmacenPermisoMixin, CreateView):
