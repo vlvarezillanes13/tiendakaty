@@ -27,7 +27,7 @@
 <div class="container tarjetas">
     <div class="row ">
       <div class="col" style="padding: 1.5rem 0;">
-        <h2>Ultimo productos agregados:</h2>
+        <h2 style="color: rgb(112,122,230,1); font-size: 40px; font-family: 'Montserrat'; font-weight: 800;">Último productos agregados:</h2>
       </div>
     </div>
     <div class="row">
@@ -40,7 +40,7 @@
                   <hr>
                   <p class="card-text">Precio: ${{producto.precio}}</p>
                   <p class="card-text">{{producto.descripcion|truncatechars:100}}</p>
-                  <a href="#" class="btn btn-primary">Ver más</a>
+                  <a href="{% url 'productos:detalle-producto' producto.pk %}"class="btn btn-primary">Ver más</a>
                 </div>
               </div>
         </div>
@@ -48,5 +48,5 @@
     </div>
 </div>
 
-<!--{% include "includes/footer.html" %}-->
+{% include "includes/footer.html" %}
 {% endblock content %}

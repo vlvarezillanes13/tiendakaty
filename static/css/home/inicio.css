@@ -7,8 +7,8 @@ hr{
 }
 
 #carouselExampleSlidesOnly > .carousel-inner > .carousel-item  > img {
-    height: 500px;
-    max-width: 1494px;
+    height: 300px;
+    max-height: 300px;
 }
 
 /* Tarjetas */

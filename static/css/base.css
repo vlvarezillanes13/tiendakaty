@@ -3,6 +3,24 @@ body {
 }
 
 /*NAV*/
-.nav-link:hover{
-    transform: scale(1.2);
+
+.navbar{
+    padding:0;
+}
+
+nav>div>div>ul{
+    width:100%;
+    justify-content: space-around;
+}
+
+nav>div>div>ul>li{
+    margin: 0;
+    padding: 0.5rem 0;
+    width: 100%;
+    text-align: center;
+}
+
+nav>div>div>ul>li:hover{
+    background-color: cornsilk;
+    height:100%;
 }

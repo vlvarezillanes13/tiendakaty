@@ -1,6 +1,9 @@
+{% load static %}
+
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(197, 201, 253, 1);">
     <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'home:inicio' %}">Papeleria Katy</a>
+      <img class="navbar-brand " src="{% static 'img/logo/logo.png' %}" alt="Logo" style="height: 90px;">
+      <a class="navbar-brand" href="{% url 'home:inicio' %}"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -28,13 +31,9 @@
             <a class="nav-link" href="#">Lápices</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'productos:listar-productos' %}">Otros - Lista</a>
+            <a class="nav-link" href="{% url 'productos:listar-productos' %}">Lista Productos </a>
           </li>
         </ul>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Buscar Articulo" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Buscar</button>
-        </form>
       </div>
     </div>
   </nav>
