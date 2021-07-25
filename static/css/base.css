@@ -4,9 +4,12 @@ body {
 
 /*NAV*/
 
+#navbarSupportedContent{
+    justify-content: center;
+}
+
 .navbar{
     padding:0;
-    max-height: 100px;
 }
 
 nav>div>div>ul{
@@ -14,19 +17,19 @@ nav>div>div>ul{
     justify-content: space-around;
 }
 
-nav>div>div>ul>li{
+li.nav-item{
+    display: flex;
+    justify-content: center;
     margin: 0;
     padding: 0.5rem 0;
     width: 100%;
-    text-align: center;
     white-space: pre;
 }
 
-nav>div>div>ul>li:hover{
-    background-color: cornsilk;
-    height:100%;
+li.nav-item:hover{
+    text-decoration: underline wavy;
 }
 
-nav>div>div>ul>li>a{
+li.nav-item>a{
     font-family: 'Montserrat';
 }
