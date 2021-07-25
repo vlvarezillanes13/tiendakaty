@@ -1,3 +1,4 @@
+from django.db import models
 from applications.producto.models import Producto
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -9,11 +10,17 @@ from django.views.generic import (
     DetailView,
     View,
 )
+from django.views.generic.edit import(
+     FormView,
+)
 # Create your views here.
 from .views import(
     Producto,
 )
 
+from .forms import(
+    ProductoForm,
+)
 
 
 class ProductoListView(ListView):
@@ -36,6 +43,37 @@ class ProductoDetailView(DetailView):
         #
         return context
 
+class ProductoCreateView(FormView):
+    #model = Producto
+    template_name = "producto/agregar_producto.html"
+    form_class = ProductoForm
+    success_url = reverse_lazy('productos:listar-productos')
+
+    def form_valid(self, form):
+        Producto.objects.create(
+            nombre=form.cleaned_data['nombre'],
+            marca=form.cleaned_data['marca'],
+            clasificador=form.cleaned_data['clasificador'],
+            descripcion=form.cleaned_data['descripcion'],
+            precio=form.cleaned_data['precio'],
+            anulado=form.cleaned_data['anulado'],
+            imagen=form.cleaned_data['imagen']
+
+        )
+        return super(ProductoCreateView, self).form_valid(form)
+
+
+class ProductoDeleteView(DeleteView):
+    template_name = "producto/eliminar.html"
+    model = Producto
+    success_url = reverse_lazy('productos:listar-productos')
+
+
+class ProductoUpdateView(UpdateView):
+    template_name = "producto/agregar_producto.html"
+    model = Producto
+    form_class = ProductoForm
+    success_url = reverse_lazy('productos:listar-productos')
 
 '''
 class ProductCreateView(AlmacenPermisoMixin, CreateView):

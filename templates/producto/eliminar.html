@@ -1,0 +1,62 @@
+{% extends "producto/base_producto.html" %}
+{% load  static %}
+
+{% block css %}
+{% endblock css %}
+
+{% block title %}
+   Eliminar del producto
+{% endblock title %}
+
+{% block content %}
+{% include "includes/header.html" %}
+<div class="container mt-5" style="border: 1px solid black;">
+    <form method="POST" class="pt-4" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col mb-3">
+                    <label for="formFile" class="form-label">Nombre: </label>
+                    <input type="text" id="disabledTextInput" class="form-control" placeholder="{{producto.nombre}}" disabled>
+            </div>
+            <div class="col mb-3">
+                <label for="formFile" class="form-label">Marca: </label>
+                <input type="text" id="disabledTextInput" class="form-control" placeholder="{{producto.marca}}" disabled>
+            </div>
+            <div class="col mb-3">
+                <label for="formFile" class="form-label">Clasificador: </label>
+                <input class="form-control" id="disabledTextInput" placeholder="{{producto.clasificador}}" disabled>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mb-3">
+                    <label for="formFile" class="form-label">Descipción: </label>
+                    <textarea type="text" id="disabledTextInput" class="form-control" placeholder="{{producto.descripcion}}" style="height: 75%;" disabled></textarea>              
+            </div>
+            <div class="col mb-3">
+                <div>
+                    <label for="formFile" class="form-label">Precio: </label>
+                    <input type="text" id="disabledTextInput" class="form-control" placeholder="${{producto.precio}}" disabled>
+                </div>
+                <div class="mt-5">
+                    <label for="formFile" class="form-label">Anulado: </label>
+                    
+                    {% if producto.anulado %}
+                        <input type="checkbox" checked disabled>
+                    {% else %}
+                        <input type="checkbox"  disabled>
+                    {% endif %}
+                        
+                </div>
+                <div class="mt-5">
+                    <label for="formFile" class="form-label">Imagen: </label>
+                    <img src="{{producto.imagen.url}}" class="img-thumbnail" alt="Imagen del Producto">
+                </div>
+                <div class="mt-5">
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </div>
+                
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}

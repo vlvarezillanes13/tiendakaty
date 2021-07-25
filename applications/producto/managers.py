@@ -19,7 +19,7 @@ class ProductoManager(models.Manager):
             # ordenar por nombre
             return consulta.order_by('nombre')
         elif order == 'marca':
-            # ordenar por nombre
+            # ordenar por marca
             return consulta.order_by('marca')
         else:
             return consulta.order_by('-created')

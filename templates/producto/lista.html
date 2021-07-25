@@ -1,6 +1,10 @@
 {% extends "producto/base_producto.html" %}
 {% load  static %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/producto/lista.css' %}">
+{% endblock css %}
+
 {% block title %}
    Lista de Productos
 {% endblock title %}
@@ -43,13 +47,17 @@
                     <th>Precio del producto</th>
                     <th>Marca</th>
                     <th>Detalles</th>
+                    <th>Eliminar</th>
+                    <th>Actualizar</th>
                 </tr>
                 {% for producto in productos %}
                 <tr>
                   <td>{{producto.nombre}}</td>
                   <td>{{producto.precio}}</td>
                   <td>{{producto.marca}}</td>
-                  <td><a href="{% url 'productos:detalle-producto' producto.pk %}" class="btn btn-warning"><i class="fas fa-info-circle"></i></a></td> 
+                  <td><a href="{% url 'productos:detalle-producto' producto.pk %}" class="btn btn-primary"><i class="fas fa-info-circle"></i></a></td>
+                  <td><a href="{% url 'productos:eliminar-producto' producto.pk %}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
+                  <td><a href="{% url 'productos:actualizar-producto' producto.pk %}" class="btn btn-warning"><i class="fas fa-edit"></i></a></td> 
               </tr>
                 {% endfor %}
             </table>

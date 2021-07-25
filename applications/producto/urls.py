@@ -14,5 +14,19 @@ urlpatterns = [
         views.ProductoDetailView.as_view(),
         name='detalle-producto'
     ),
-    
+    path(
+        'agregar-producto/',
+        views.ProductoCreateView.as_view(),
+        name='agregar-producto'
+    ),
+    path(
+        'eliminar-producto/<pk>/',
+        views.ProductoDeleteView.as_view(),
+        name='eliminar-producto'
+    ),
+    path(
+        'actualizar-producto/<pk>/',
+        views.ProductoUpdateView.as_view(),
+        name='actualizar-producto'
+    ),
 ]
