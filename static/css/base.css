@@ -6,6 +6,7 @@ body {
 
 .navbar{
     padding:0;
+    max-height: 100px;
 }
 
 nav>div>div>ul{
@@ -18,9 +19,14 @@ nav>div>div>ul>li{
     padding: 0.5rem 0;
     width: 100%;
     text-align: center;
+    white-space: pre;
 }
 
 nav>div>div>ul>li:hover{
     background-color: cornsilk;
     height:100%;
+}
+
+nav>div>div>ul>li>a{
+    font-family: 'Montserrat';
 }
