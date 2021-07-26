@@ -29,4 +29,14 @@ urlpatterns = [
         views.ProductoUpdateView.as_view(),
         name='actualizar-producto'
     ),
+    path(
+        'impresiones',
+        views.ImpresionesPageView.as_view(),
+        name='impresiones'
+    ),
+    path(
+        'productos',
+        views.ClasificadorListView.as_view(),
+        name='clasificador-productos'
+    ),
 ]

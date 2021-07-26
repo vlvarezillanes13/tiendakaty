@@ -10,29 +10,48 @@
 {% endblock title %}
 
 {% block content %}
-<div class="container mb-3 mt-3 ">
-    <div class="row justify-content-md-center">
-        <dic class="col col-lg-2 ">
-            <div class="card">
-                <img src="{{producto.imagen.url}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                <h5 class="card-title">{{producto.nombre}}</h5>
-                <p class="card-text">{{producto.descripcion}}</p>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Marca:</b></li>
-                    <li class="list-group-item">{{producto.marca}}</li>
-                    <li class="list-group-item"><b>Precio:</b></li>
-                    <li class="list-group-item">${{producto.precio}}</li>
-                </ul>
-                <div class="card-body">
-                    <div class="btn-group">
-                        <a href="{% url 'productos:listar-productos' %}" class="card-link btn btn-primary" id="volver">Volver</a>
-                        <a href="{% url 'home:inicio' %}"  class="card-link btn btn-primary">Inicio</a>
-                    </div>
+<div class="container mb-3 mt-3">
+    <div class="row ">
+        <div class="col imagen">
+            <img src="{{producto.imagen.url}}" class="rounded mx-auto d-block"  alt="Imagen del Producto">
+        </div>
+        <div class="col">
+            <div class="row mt-5">
+                <div class="col">
+                    <h5>Nombre: </h5>
+                    <p>{{producto.nombre}}</p>
                 </div>
             </div>
-        </dic>
+            <hr>
+            <div class="row mt-2">
+                <div class="col">
+                    <h5>Descripción: </h5>
+                    <p>{{producto.descripcion}}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row mt-2">
+                <div class="col">
+                    <h5>Marca: </h5>
+                    <p>{{producto.marca}}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row mt-2">
+                <div class="col">
+                    <h5>Precio: </h5>
+                    <p>${{producto.precio}}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row mt-4">
+                <div class="col mb-3">
+                    <a href="{% url 'home:inicio' %}"  class="card-link btn btn-primary">Inicio</a>
+                    <a href="{% url 'productos:listar-productos' %}" class="card-link btn btn-primary" id="volver">Lista de Productos</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock content %}
+

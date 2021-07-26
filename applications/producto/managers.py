@@ -23,3 +23,9 @@ class ProductoManager(models.Manager):
             return consulta.order_by('marca')
         else:
             return consulta.order_by('-created')
+
+
+    def buscar_producto_clasificador(self, clasificador):
+        return self.filter(
+            Q(clasificador__nombre=clasificador)
+        )

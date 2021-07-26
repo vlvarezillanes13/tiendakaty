@@ -3,12 +3,11 @@ from applications.producto.models import Producto
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import (
+    TemplateView,
     ListView,
-    CreateView,
     UpdateView,
     DeleteView,
     DetailView,
-    View,
 )
 from django.views.generic.edit import(
      FormView,
@@ -90,7 +89,23 @@ class ProductoUpdateView(UpdateView):
             imagen=form.cleaned_data['imagen']
 
         )
-        return super(ProductoCreateView, self).form_valid(form) 
+        return super(ProductoCreateView, self).form_valid(form)
+
+
+class ImpresionesPageView(TemplateView):
+    template_name = "clasificador/impresiones.html"
+
+
+class ClasificadorListView(ListView):
+    template_name = "clasificador/clasificador.html"
+    context_object_name = 'productos'
+    #paginate_by = 5
+
+    def get_queryset(self):
+        clasificador = self.request.GET.get("clasificador", '')
+        queryset = Producto.objects.buscar_producto_clasificador(clasificador)
+        return queryset
+
 
 '''
 class ProductCreateView(AlmacenPermisoMixin, CreateView):

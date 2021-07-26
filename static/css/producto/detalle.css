@@ -1,12 +1,16 @@
-.card > ul >li,
-.card-body{
-    background-color: rgba(255, 99, 71, 0.4);
+img{
+    height: 450px;
 }
 
-.card{
-    width: 18rem;
+.container{
+    border: 1px solid black;
 }
 
-#volver{
-    margin-right: 0.5rem;
+hr{
+    margin: 0;
+}
+
+.imagen{
+    border-right: 1px solid black;
+    padding: 0;
 }
