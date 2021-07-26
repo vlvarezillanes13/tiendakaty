@@ -1,3 +1,15 @@
+#buscador {
+    margin-top: 3rem;
+}
+
+#orden-opc {
+    margin-top: 1.5rem;
+}
+
+#productos {
+    margin-top: 1.5rem;
+}
+
 th,
 td{
     text-align:center;

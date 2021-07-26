@@ -12,11 +12,23 @@ hr{
 }
 
 /* Tarjetas */
+#titulo{
+    padding: 1.5rem 0;
+}
+
+#titulo > h2{
+    color: rgb(112,122,230,1); 
+    font-size: 40px;
+    font-family: 'Montserrat';
+    font-weight: 800;
+}
+
 .tarjetas > .row > .col{
     display: flex;
     justify-content: center;
 }
 .card{
+    width: 18rem;
     margin-top: 10px;
     margin-bottom: 5px;
     background-color: rgba(255, 99, 71, 0.4);

@@ -7,8 +7,6 @@
 
 
 {% block content %}
-
-{% include "includes/header.html" %}
 <div class="carousel">
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -26,14 +24,14 @@
 </div>
 <div class="container tarjetas">
     <div class="row ">
-      <div class="col" style="padding: 1.5rem 0;">
-        <h2 style="color: rgb(112,122,230,1); font-size: 40px; font-family: 'Montserrat'; font-weight: 800;">Último productos agregados:</h2>
+      <div id='titulo' class="col">
+        <h2>Último productos agregados:</h2>
       </div>
     </div>
     <div class="row">
         {% for producto in productos  %}
         <div class="col">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <img src="{{producto.imagen.url}}" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{producto.nombre}}</h5>
@@ -47,6 +45,5 @@
         {% endfor %}
     </div>
 </div>
-
 {% include "includes/footer.html" %}
 {% endblock content %}

@@ -1,0 +1,16 @@
+#guardar{
+    float:right;
+}
+
+#volver{
+    float:right;
+    margin-right: 0.5rem;
+}
+
+.container{
+    border: 1px solid black;
+}
+
+img{
+    height: 100px;
+}

@@ -1,0 +1,16 @@
+.container{
+    border: 1px solid black;
+}
+
+#eliminar{
+    float:right;
+}
+
+#volver{
+    float:right;
+    margin-right: 0.5rem;
+}
+
+img{
+    height: 150px;
+}

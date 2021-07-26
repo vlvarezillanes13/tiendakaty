@@ -2,6 +2,7 @@
 {% load  static %}
 
 {% block css %}
+<link rel="stylesheet" href="{% static 'css/producto/eliminar.css' %}">
 {% endblock css %}
 
 {% block title %}
@@ -9,8 +10,7 @@
 {% endblock title %}
 
 {% block content %}
-{% include "includes/header.html" %}
-<div class="container mt-5" style="border: 1px solid black;">
+<div class="container mt-3 mb-3">
     <form method="POST" class="pt-4" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="row">
@@ -47,17 +47,16 @@
                     {% endif %}
                         
                 </div>
-                <div class="mt-5">
-                    <label for="formFile" class="form-label">Imagen: </label>
-                    <img src="{{producto.imagen.url}}" class="img-thumbnail" alt="Imagen del Producto">
-                </div>
-                <div class="mt-5">
-                    <div class="btn-group">
-                        <a href="{% url 'productos:listar-productos' %}" class="card-link btn btn-primary" style="margin-right: 0.5rem;">Volver</a>
-                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                    </div>
-                </div>
-                
+                <div class="mt-1">
+                    <label for="formFile" class="form-label">Imagen del producto: </label>
+                    <img src="{{producto.imagen.url}}" alt="Imagen del Producto">
+                </div>               
+            </div>
+        </div>
+        <div class="row">
+            <div class="col mt-3 mb-3">
+                <button type="submit" class="btn btn-danger" id="eliminar">Eliminar</button>
+                <a href="{% url 'productos:listar-productos' %}" id="volver" class="btn btn-primary">Volver</a>
             </div>
         </div>
     </form>
