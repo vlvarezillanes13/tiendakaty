@@ -2,7 +2,7 @@
 {% load  static %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/clasificador/clasificador.css' %}">
+<link rel="stylesheet" href="{% static 'css/clasificador/tipos.css' %}">
 {% endblock css %}
 
 {% block title %}
@@ -10,4 +10,41 @@
 {% endblock title %}
 
 {% block content %}
+
+<section class="py-5 text-center container">
+   <div class="row py-lg-5">
+     <div class="col-lg-6 col-md-8 mx-auto">
+       <h1 class="fw-light">Productos de {{clasificador}}</h1>
+   </div>
+ </section>
+
+ <div class="album py-5 bg-light">
+   <div class="container">
+
+     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      
+      {% for producto in productos %}
+         <div class="col">
+            <div class="card shadow-sm">
+            <img class="bd-placeholder-img card-img-top" src="{{producto.imagen.url}}" role="img" ></svg>
+
+            <div class="card-body">
+               <h5 class="card-title">{{producto.nombre}}</h5>
+               <hr>
+               <p class="card-text">{{producto.descripcion|truncatechars:100}}</p>
+               <hr>
+               <p class="card-text">${{producto.precio}}</p>
+               <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                     <a href="{% url 'productos:detalle-producto' producto.pk %}"class="btn btn-primary">Ver más</a>
+                  </div>
+               </div>
+            </div>
+            </div>
+       </div>
+      {% endfor %}
+      
+     </div>
+   </div>
+ </div>
 {% endblock content %}

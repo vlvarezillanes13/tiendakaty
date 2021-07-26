@@ -106,6 +106,12 @@ class ClasificadorListView(ListView):
         queryset = Producto.objects.buscar_producto_clasificador(clasificador)
         return queryset
 
+    def get_context_data(self, **kwargs):
+        clasificador = self.request.GET.get("clasificador", '')
+        context = super().get_context_data(**kwargs)
+        context['clasificador'] = clasificador
+        return context
+
 
 '''
 class ProductCreateView(AlmacenPermisoMixin, CreateView):
