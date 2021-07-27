@@ -51,6 +51,7 @@ class ProductoCreateView(FormView):
     def form_valid(self, form):
         nombre  = form.cleaned_data['nombre']
         nombre_edit = nombre[0].upper()+nombre[1::]
+        
         Producto.objects.create(
             nombre=nombre_edit,
             marca=form.cleaned_data['marca'],
@@ -89,7 +90,7 @@ class ProductoUpdateView(UpdateView):
             imagen=form.cleaned_data['imagen']
 
         )
-        return super(ProductoCreateView, self).form_valid(form)
+        return super(ProductoUpdateView, self).form_valid(form)
 
 
 class ImpresionesPageView(TemplateView):

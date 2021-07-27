@@ -49,8 +49,9 @@ class Producto(TimeStampedModel):
         'descripcion del producto',
         blank=True,
     )
-    precio = models.PositiveIntegerField(
+    precio = models.CharField(
         'precio venta',
+        max_length=10
     )
     anulado = models.BooleanField(
         'eliminado',

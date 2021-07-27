@@ -1,9 +1,9 @@
 .card{
-    width:300px;
+    width:370px;
 }
 
 .card img{
-    height: 280px;
+    height: 360px;
     width: 100%;
 }
 
@@ -13,4 +13,9 @@ h1{
     font-family: 'Montserrat';
     font-weight: 800;
     border-bottom: 2px solid #88b2ff;
+}
+
+
+hr{
+    margin-top: 2px;
 }

@@ -38,7 +38,13 @@ class ProductoForm(forms.ModelForm):
                     'class':'form-control'
                 }
             ),
-            'precio': forms.NumberInput(
+            'precio': forms.TextInput(
+                attrs = {
+                    'placeholder': 'Precio...',
+                    'class':'form-control'
+                }
+            ),
+            'imagen': forms.ClearableFileInput(
                 attrs = {
                     'placeholder': 'Precio...',
                     'class':'form-control'
@@ -48,9 +54,11 @@ class ProductoForm(forms.ModelForm):
         }
     # validations  
     def clean_precio(self):
-        precio= self.cleaned_data['precio']
+        precio_valid= self.cleaned_data['precio']
+        precio = int(precio_valid.replace(".",''))
         if not precio > 0:
             raise forms.ValidationError('Ingrese un precio compra mayor a cero')
-
+        else:
+            precio = precio_valid
         return precio
     
