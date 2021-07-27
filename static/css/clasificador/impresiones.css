@@ -1,0 +1,16 @@
+.card{
+    width:370px;
+}
+
+.card img{
+    height: 360px;
+    width: 100%;
+}
+
+h1{
+    color: rgb(112,122,230,1); 
+    font-size: 100px;
+    font-family: 'Montserrat';
+    font-weight: 800;
+    border-bottom: 2px solid #88b2ff;
+}
