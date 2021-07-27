@@ -1,0 +1,42 @@
+{% extends "users/base_users.html" %}
+{% load  static %}
+
+{% block css %}
+    <link href="{% static 'css/users/login.css' %}" rel="stylesheet">
+{% endblock css %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+
+{% block content %}
+<div class="container">
+    <div class="text-center">
+        <div class="form-signin">
+            <form class="p-4" method="post">
+                {% csrf_token %}
+                <img class="mb-4" src="{% static 'img/logo/logoPestaña.png' %}" alt="Logo">
+                <h1 class="h3 mb-3 fw-normal">Ingrese Credenciales: </h1>
+                {% if form.errors %}
+                <div class="form-floating">
+                    {% for e in form.non_field_errors %}
+                        <p style="color: red;">{{e}}</p>
+                    {% endfor %} 
+                </div>
+                {% endif %}
+                <div class="form-floating">
+                    {{form.username}}
+                    <label for="floatingInput">Nombre de Usuario</label>
+                </div>
+                <div class="form-floating">
+                    {{form.password}}
+                    <label for="floatingPassword">Contraseña</label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Ingresar</button>
+                <p class="mt-5 mb-3 text-muted">&copy;2021</p>
+            </form>
+        </div>    
+    </div>
+</div>
+{% endblock content %}

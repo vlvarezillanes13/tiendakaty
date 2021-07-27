@@ -35,11 +35,13 @@
             <span class="btn btn-outline-primary">Por Marca</span>
           </a>
          </div>
-         <div class="col col-lg-2">
-          <a href="{% url 'productos:agregar-producto' %}">
-            <span class="btn btn-outline-success">Añadir Producto</span>
-          </a>
-         </div>
+         {% if not user.is_anonymous %}
+          <div class="col col-lg-2">
+            <a href="{% url 'productos:agregar-producto' %}">
+              <span class="btn btn-outline-success">Añadir Producto</span>
+            </a>
+          </div>
+          {% endif %}
     </div>
 
     <div id='productos' class="row">
@@ -50,8 +52,11 @@
                     <th>Precio del producto</th>
                     <th>Marca</th>
                     <th>Detalles</th>
-                    <th>Eliminar</th>
-                    <th>Actualizar</th>
+                    {% if not user.is_anonymous %}
+                      <th>Eliminar</th>
+                      <th>Actualizar</th>
+                    {% endif %}
+                      
                 </tr>
                 {% for producto in productos %}
                   <tr>
@@ -59,8 +64,10 @@
                     <td>{{producto.precio}}</td>
                     <td>{{producto.marca}}</td>
                     <td><a href="{% url 'productos:detalle-producto' producto.pk %}" class="btn btn-primary"><i class="fas fa-info-circle"></i></a></td>
-                    <td><a href="{% url 'productos:eliminar-producto' producto.pk %}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
-                    <td><a href="{% url 'productos:actualizar-producto' producto.pk %}" class="btn btn-warning"><i class="fas fa-edit"></i></a></td> 
+                    {% if not user.is_anonymous %}
+                      <td><a href="{% url 'productos:eliminar-producto' producto.pk %}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
+                      <td><a href="{% url 'productos:actualizar-producto' producto.pk %}" class="btn btn-warning"><i class="fas fa-edit"></i></a></td>
+                    {% endif %}
                   </tr>
                 
                 {% empty %}
