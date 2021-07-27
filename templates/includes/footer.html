@@ -1,3 +1,6 @@
+{% load static %}
+
+
 <!-- Footer -->
 <footer class="text-center text-lg-start bg-light text-muted mt-5">
   <!-- Section: Social media -->
@@ -23,9 +26,30 @@
         <i class="fab fa-google"></i>
       </a>
       -->
-      <a href="https://www.instagram.com/cathy_papeleria/?hl=es-la  target="_blank" class="me-4 text-reset">
+      <a href="https://www.instagram.com/cathy_papeleria/?hl=es-la"  target="_blank" class="me-4 text-reset">
         <i class="fab fa-instagram"></i>
       </a>
+
+      <!--BOTON MODAL-->
+      <button type="button" class="me-4 text-reset" data-bs-toggle="modal" data-bs-target="#exampleModal" style="border: none; outline:none;">
+        <i class="fas fa-qrcode"></i>
+      </button>
+       <!-- FIN BOTON MODAL-->
+      <!--MODAL-->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Escanea nuestro QR para contactarnos</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <img src="{% static 'img/logo/qr-contact.png' %}" alt="QR" height="200px" style="margin-left: auto; margin-right: auto; display: block;">
+            </div>
+          </div>
+        </div>
+      </div>
+       <!--FIN MODAL-->
       <!--
       <a href="" class="me-4 text-reset">
         <i class="fab fa-linkedin"></i>
@@ -105,7 +129,7 @@
           <h6 class="text-uppercase fw-bold mb-4">
             Contact
           </h6>
-          <p><i class="fas fa-home me-3"></i>Chile, Santiago - La Florida/p>
+          <p><i class="fas fa-home me-3"></i>Chile, Santiago - La Florida</p>
           <p>
             <i class="fas fa-envelope me-3"></i>
             cathi.papeleria7620@gmail.com
