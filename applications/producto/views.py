@@ -70,6 +70,12 @@ class ProductoDeleteView(DeleteView):
     model = Producto
     success_url = reverse_lazy('productos:listar-productos')
 
+    def post(self, request, *args, **kwargs):
+        pk = self.kwargs['pk']
+        producto = Producto.objects.get(pk=pk)
+        producto.imagen.delete()
+        return self.delete(request, *args, **kwargs)
+
 
 class ProductoUpdateView(UpdateView):
     template_name = "producto/actualizar.html"
@@ -79,18 +85,32 @@ class ProductoUpdateView(UpdateView):
 
     def form_valid(self, form):
         pk = self.kwargs['pk']
-        nombre  = form.cleaned_data['nombre']
-        nombre_edit = nombre[0].upper()+nombre[1::]
-        Producto.objects.filter(pk=pk).update(
-            nombre=nombre_edit,
-            marca=form.cleaned_data['marca'],
-            clasificador=form.cleaned_data['clasificador'],
-            descripcion=form.cleaned_data['descripcion'],
-            precio=form.cleaned_data['precio'],
-            anulado=form.cleaned_data['anulado'],
-            imagen=form.cleaned_data['imagen']
-
-        )
+        producto = Producto.objects.get(pk=pk)
+        if producto.imagen != form.cleaned_data['imagen']:
+            producto.imagen.delete()
+            nombre  = form.cleaned_data['nombre']
+            nombre_edit = nombre[0].upper()+nombre[1::]
+            Producto.objects.filter(pk=pk).update(
+                nombre=nombre_edit,
+                marca=form.cleaned_data['marca'],
+                clasificador=form.cleaned_data['clasificador'],
+                descripcion=form.cleaned_data['descripcion'],
+                precio=form.cleaned_data['precio'],
+                anulado=form.cleaned_data['anulado'],
+                imagen=form.cleaned_data['imagen']
+            )
+        else:
+            nombre  = form.cleaned_data['nombre']
+            nombre_edit = nombre[0].upper()+nombre[1::]
+            Producto.objects.filter(pk=pk).update(
+                nombre=nombre_edit,
+                marca=form.cleaned_data['marca'],
+                clasificador=form.cleaned_data['clasificador'],
+                descripcion=form.cleaned_data['descripcion'],
+                precio=form.cleaned_data['precio'],
+                anulado=form.cleaned_data['anulado'],
+                imagen=form.cleaned_data['imagen']
+            )
         return super(ProductoUpdateView, self).form_valid(form)
 
 
