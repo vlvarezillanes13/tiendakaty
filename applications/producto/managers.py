@@ -10,9 +10,24 @@ class ProductoManager(models.Manager):
         ).order_by('-created')
 
     
-    def buscar_producto(self, kword, order):
+    def buscar_producto_admin(self, kword, order):
         consulta = self.filter(
             Q(nombre__icontains=kword)
+        )
+        # verificamos en que orden se solicita
+        if order == 'nombre':
+            # ordenar por nombre
+            return consulta.order_by('nombre')
+        elif order == 'marca':
+            # ordenar por marca
+            return consulta.order_by('marca')
+        else:
+            return consulta.order_by('-created')
+
+    def buscar_producto_cliente(self, kword, order):
+        consulta = self.filter(
+            Q(nombre__icontains=kword) &
+            Q(anulado=False)
         )
         # verificamos en que orden se solicita
         if order == 'nombre':

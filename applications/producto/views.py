@@ -30,7 +30,12 @@ class ProductoListView(ListView):
     def get_queryset(self):
         kword = self.request.GET.get("kword", '')
         order = self.request.GET.get("order", '')
-        queryset = Producto.objects.buscar_producto(kword, order)
+        if self.request.user.is_authenticated:
+            print('**************1*******************')
+            queryset = Producto.objects.buscar_producto_admin(kword, order)
+        else:
+            print('**************2*******************')
+            queryset = Producto.objects.buscar_producto_cliente(kword, order)
         return queryset
         
 class ProductoDetailView(DetailView):
@@ -137,7 +142,7 @@ class ClasificadorListView(ListView):
 class MarcaCreateView(View):
     def get(self, request, *args, **kwargs):
         marca = self.request.GET.get("nombre", '')
-        Marca.object.create(
+        Marca.objects.create(
             nombre = marca
         )
         return HttpResponseRedirect(

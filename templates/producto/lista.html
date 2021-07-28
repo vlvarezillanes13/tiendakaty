@@ -55,18 +55,26 @@
                     {% if not user.is_anonymous %}
                       <th>Eliminar</th>
                       <th>Actualizar</th>
+                      <th>Estado</th>
                     {% endif %}
                       
                 </tr>
                 {% for producto in productos %}
                   <tr>
                     <td>{{producto.nombre}}</td>
-                    <td>{{producto.precio}}</td>
+                    <td>${{producto.precio}}</td>
                     <td>{{producto.marca}}</td>
                     <td><a href="{% url 'productos:detalle-producto' producto.pk %}" class="btn btn-primary"><i class="fas fa-info-circle"></i></a></td>
                     {% if not user.is_anonymous %}
                       <td><a href="{% url 'productos:eliminar-producto' producto.pk %}" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a></td>
                       <td><a href="{% url 'productos:actualizar-producto' producto.pk %}" class="btn btn-warning"><i class="fas fa-edit"></i></a></td>
+                      
+                      {% if producto.anulado %}
+                        <td>No disponible</td>
+                      {% else %}
+                        <td>Disponible</td>
+                      {% endif %}
+                        
                     {% endif %}
                   </tr>
                 
