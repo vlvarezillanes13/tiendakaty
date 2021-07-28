@@ -1,20 +1,20 @@
-from django.db import models
-from applications.producto.models import Producto
-from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy, reverse
 from django.views.generic import (
     TemplateView,
     ListView,
     UpdateView,
     DeleteView,
     DetailView,
+    View
 )
 from django.views.generic.edit import(
      FormView,
 )
 # Create your views here.
-from .views import(
+from .models import(
     Producto,
+    Marca
 )
 
 from .forms import(
@@ -78,9 +78,10 @@ class ProductoUpdateView(UpdateView):
     success_url = reverse_lazy('productos:listar-productos')
 
     def form_valid(self, form):
+        pk = self.kwargs['pk']
         nombre  = form.cleaned_data['nombre']
         nombre_edit = nombre[0].upper()+nombre[1::]
-        Producto.objects.update(
+        Producto.objects.filter(pk=pk).update(
             nombre=nombre_edit,
             marca=form.cleaned_data['marca'],
             clasificador=form.cleaned_data['clasificador'],
@@ -113,38 +114,12 @@ class ClasificadorListView(ListView):
         context['clasificador'] = clasificador
         return context
 
-
-'''
-class ProductCreateView(AlmacenPermisoMixin, CreateView):
-    template_name = "producto/form_producto.html"
-    form_class = ProductForm
-    success_url = reverse_lazy('producto_app:producto-lista')
-
-
-class ProductUpdateView(AlmacenPermisoMixin, UpdateView):
-    template_name = "producto/form_producto.html"
-    model = Product
-    form_class = ProductForm
-    success_url = reverse_lazy('producto_app:producto-lista')
-
-
-
-class ProductDeleteView(AlmacenPermisoMixin, DeleteView):
-    template_name = "producto/delete.html"
-    model = Product
-    success_url = reverse_lazy('producto_app:producto-lista')
-
-
-class ProductDetailView(AlmacenPermisoMixin, DetailView):
-    template_name = "producto/detail.html"
-    model = Product
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        #
-        context["ventas_mes"] = SaleDetail.objects.ventas_mes_producto(
-            self.kwargs['pk']
+class MarcaCreateView(View):
+    def get(self, request, *args, **kwargs):
+        marca = self.request.GET.get("nombre", '')
+        Marca.object.create(
+            nombre = marca
         )
-        return context
-
-'''
+        return HttpResponseRedirect(
+            reverse('productos:agregar-producto')
+        )

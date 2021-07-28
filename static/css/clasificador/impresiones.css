@@ -1,10 +1,9 @@
 .card{
-    width:370px;
+    width: 25rem;
 }
 
 .card img{
-    height: 360px;
-    width: 100%;
+    height: 280px;
 }
 
 h1{

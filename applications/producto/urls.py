@@ -39,4 +39,9 @@ urlpatterns = [
         views.ClasificadorListView.as_view(),
         name='clasificador-productos'
     ),
+    path(
+        'nueva-marca',
+        views.MarcaCreateView.as_view(),
+        name='agregar-marca'
+    ),
 ]

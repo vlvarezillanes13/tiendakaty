@@ -70,6 +70,8 @@ class Producto(TimeStampedModel):
     class Meta:
         verbose_name = 'Producto'
         verbose_name_plural = 'Productos'
+        unique_together = [['nombre', 'marca']]
+
 
     def __str__(self):
         return self.nombre
